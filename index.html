@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simulador de Caída Libre</title>
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         ENCABEZADO
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="header-content">
+
+            <div>
+                <span class="tag">FÍSICA • SIMULADOR INTERACTIVO</span>
+
+                <h1>
+                    Simulador de Caída Libre
+                </h1>
+
+                <p>
+                    Estudio de la conservación de la energía mecánica
+                </p>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="container">
+
+
+        <!-- =================================================
+             SECCIÓN DE VARIABLES
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="section-number">01</span>
+
+                    <h2>
+                        Variables del simulador
+                    </h2>
+
+                    <p>
+                        Modifica los valores para observar cómo cambia
+                        el movimiento del objeto.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="controls-grid">
+
+
+                <!-- MASA -->
+
+                <div class="control">
+
+                    <label for="masa">
+                        ⚖️ Masa
+                    </label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="number"
+                            id="masa"
+                            min="0.1"
+                            step="0.1"
+                            value="2"
+                        >
+
+                        <span>kg</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ALTURA -->
+
+                <div class="control">
+
+                    <label for="alturaInicial">
+                        📏 Altura inicial
+                    </label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="number"
+                            id="alturaInicial"
+                            min="1"
+                            step="1"
+                            value="20"
+                        >
+
+                        <span>m</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GRAVEDAD -->
+
+                <div class="control">
+
+                    <label for="gravedad">
+                        🌎 Gravedad
+                    </label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="number"
+                            id="gravedad"
+                            min="0.1"
+                            step="0.01"
+                            value="9.81"
+                        >
+
+                        <span>m/s²</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FRICCIÓN -->
+
+                <div class="control">
+
+                    <label for="friccion">
+                        💨 Fricción
+                    </label>
+
+                    <div class="input-group">
+
+                        <input
+                            type="number"
+                            id="friccion"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value="0"
+                        >
+
+                        <span>%</span>
+
+                    </div>
+
+                    <small>
+                        0% = sin fricción
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTONES -->
+
+            <div class="buttons">
+
+                <button
+                    id="btnIniciar"
+                    class="btn btn-primary"
+                >
+                    ▶ Iniciar simulación
+                </button>
+
+                <button
+                    id="btnPausar"
+                    class="btn btn-secondary"
+                >
+                    ⏸ Pausar
+                </button>
+
+                <button
+                    id="btnReiniciar"
+                    class="btn btn-danger"
+                >
+                    🔄 Reiniciar
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SIMULACIÓN
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-number">02</span>
+
+                    <h2>
+                        Simulación
+                    </h2>
+
+                    <p>
+                        Observa el movimiento del objeto durante la caída.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="simulation-area">
+
+
+                <!-- ESCALA DE ALTURA -->
+
+                <div class="height-scale">
+
+                    <span id="alturaMaxima">
+                        20 m
+                    </span>
+
+                    <span>
+                        15 m
+                    </span>
+
+                    <span>
+                        10 m
+                    </span>
+
+                    <span>
+                        5 m
+                    </span>
+
+                    <span>
+                        0 m
+                    </span>
+
+                </div>
+
+
+                <!-- ÁREA DONDE CAE EL OBJETO -->
+
+                <div
+                    id="zonaCaida"
+                    class="fall-zone"
+                >
+
+                    <div
+                        id="objeto"
+                        class="objeto"
+                    >
+                        ●
+                    </div>
+
+                    <div class="suelo">
+                        <span>SUPERFICIE</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ESTADO -->
+
+            <div
+                id="estadoSimulacion"
+                class="simulation-status"
+            >
+                🟢 Listo para iniciar
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATOS EN TIEMPO REAL
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-number">03</span>
+
+                    <h2>
+                        Datos en tiempo real
+                    </h2>
+
+                    <p>
+                        Valores calculados durante la caída.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-grid">
+
+
+                <!-- TIEMPO -->
+
+                <div class="data-box">
+
+                    <span class="data-icon">
+                        ⏱️
+                    </span>
+
+                    <span class="data-label">
+                        Tiempo
+                    </span>
+
+                    <strong id="tiempo">
+                        0.00
+                    </strong>
+
+                    <span>
+                        segundos
+                    </span>
+
+                </div>
+
+
+                <!-- ALTURA -->
+
+                <div class="data-box">
+
+                    <span class="data-icon">
+                        📏
+                    </span>
+
+                    <span class="data-label">
+                        Altura
+                    </span>
+
+                    <strong id="alturaActual">
+                        20.00
+                    </strong>
+
+                    <span>
+                        metros
+                    </span>
+
+                </div>
+
+
+                <!-- VELOCIDAD -->
+
+                <div class="data-box">
+
+                    <span class="data-icon">
+                        🚀
+                    </span>
+
+                    <span class="data-label">
+                        Velocidad
+                    </span>
+
+                    <strong id="velocidad">
+                        0.00
+                    </strong>
+
+                    <span>
+                        m/s
+                    </span>
+
+                </div>
+
+
+                <!-- ENERGÍA POTENCIAL -->
+
+                <div class="data-box potential">
+
+                    <span class="data-icon">
+                        🔵
+                    </span>
+
+                    <span class="data-label">
+                        Energía potencial
+                    </span>
+
+                    <strong id="energiaPotencial">
+                        392.40
+                    </strong>
+
+                    <span>
+                        J
+                    </span>
+
+                </div>
+
+
+                <!-- ENERGÍA CINÉTICA -->
+
+                <div class="data-box kinetic">
+
+                    <span class="data-icon">
+                        🟠
+                    </span>
+
+                    <span class="data-label">
+                        Energía cinética
+                    </span>
+
+                    <strong id="energiaCinetica">
+                        0.00
+                    </strong>
+
+                    <span>
+                        J
+                    </span>
+
+                </div>
+
+
+                <!-- ENERGÍA MECÁNICA -->
+
+                <div class="data-box mechanical">
+
+                    <span class="data-icon">
+                        🟠
+                    </span>
+
+                    <span class="data-label">
+                        Energía mecánica
+                    </span>
+
+                    <strong id="energiaMecanica">
+                        392.40
+                    </strong>
+
+                    <span>
+                        J
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- INDICADOR DE CONSERVACIÓN -->
+
+            <div
+                id="conservacion"
+                class="conservation"
+            >
+
+                <span class="conservation-icon">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Energía mecánica conservada
+                    </strong>
+
+                    <p>
+                        La energía mecánica permanece aproximadamente constante.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TABLA DE DATOS
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-number">04</span>
+
+                    <h2>
+                        Tabla de datos
+                    </h2>
+
+                    <p>
+                        Registro de los valores obtenidos durante la simulación.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table id="tablaDatos">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Tiempo (s)
+                            </th>
+
+                            <th>
+                                Altura (m)
+                            </th>
+
+                            <th>
+                                Velocidad (m/s)
+                            </th>
+
+                            <th>
+                                Ep (J)
+                            </th>
+
+                            <th>
+                                Ec (J)
+                            </th>
+
+                            <th>
+                                Em (J)
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="cuerpoTabla">
+
+                        <!--
+                            JavaScript agregará
+                            los datos automáticamente.
+                        -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GRÁFICA DE ENERGÍA
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-number">05</span>
+
+                    <h2>
+                        Gráfica de energía
+                    </h2>
+
+                    <p>
+                        Evolución de la energía potencial, cinética
+                        y mecánica durante la caída.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="graficaEnergia"></canvas>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GRÁFICA DE MOVIMIENTO
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-number">06</span>
+
+                    <h2>
+                        Gráfica del movimiento
+                    </h2>
+
+                    <p>
+                        Comparación entre altura y velocidad respecto al tiempo.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="graficaMovimiento"></canvas>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FÓRMULAS
+        ================================================== -->
+
+        <section class="card formulas">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-number">07</span>
+
+                    <h2>
+                        Fórmulas utilizadas
+                    </h2>
+
+                    <p>
+                        Principios físicos empleados por el simulador.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="formula-grid">
+
+
+                <div class="formula-box">
+
+                    <h3>
+                        Energía potencial
+                    </h3>
+
+                    <div class="formula">
+                        Ep = m × g × h
+                    </div>
+
+                    <p>
+                        Energía almacenada debido a la altura del objeto.
+                    </p>
+
+                </div>
+
+
+                <div class="formula-box">
+
+                    <h3>
+                        Energía cinética
+                    </h3>
+
+                    <div class="formula">
+                        Ec = ½ × m × v²
+                    </div>
+
+                    <p>
+                        Energía asociada al movimiento del objeto.
+                    </p>
+
+                </div>
+
+
+                <div class="formula-box">
+
+                    <h3>
+                        Energía mecánica
+                    </h3>
+
+                    <div class="formula">
+                        Em = Ep + Ec
+                    </div>
+
+                    <p>
+                        Suma de la energía potencial y cinética.
+                    </p>
+
+                </div>
+
+
+                <div class="formula-box">
+
+                    <h3>
+                        Velocidad
+                    </h3>
+
+                    <div class="formula">
+                        v = √(2 × g × Δh)
+                    </div>
+
+                    <p>
+                        Velocidad del objeto durante la caída.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONCLUSIÓN
+        ================================================== -->
+
+        <section class="conclusion">
+
+            <div class="conclusion-icon">
+                💡
+            </div>
+
+            <div>
+
+                <h2>
+                    Observación
+                </h2>
+
+                <p>
+                    Durante una caída libre sin fricción, la energía potencial
+                    disminuye mientras la energía cinética aumenta. La suma
+                    de ambas, correspondiente a la energía mecánica, permanece
+                    aproximadamente constante.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            Simulador de Física • Caída Libre
+        </p>
+
+        <p>
+            Proyecto académico
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

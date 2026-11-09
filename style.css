@@ -1,0 +1,1054 @@
+/* =========================================================
+   SIMULADOR DE CAÍDA LIBRE
+   HOJA DE ESTILOS
+========================================================= */
+
+
+/* =========================================================
+   1. CONFIGURACIÓN GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #eef3f8;
+    color: #172033;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   2. ENCABEZADO
+========================================================= */
+
+.header {
+    background: linear-gradient(
+        135deg,
+        #88c517,
+        #b3bedd,
+        #1edd0c
+    );
+
+    color: white;
+    padding: 55px 20px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.tag {
+    display: inline-block;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    padding: 7px 14px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+}
+
+.header h1 {
+    font-size: clamp(32px, 5vw, 58px);
+
+    line-height: 1.1;
+
+    margin-bottom: 14px;
+
+    font-weight: 800;
+}
+
+.header p {
+    font-size: 18px;
+
+    color: #dbeafe;
+
+    max-width: 700px;
+}
+
+
+/* =========================================================
+   3. CONTENEDOR PRINCIPAL
+========================================================= */
+
+.container {
+    width: min(1200px, 92%);
+
+    margin: 40px auto 70px;
+}
+
+
+/* =========================================================
+   4. TARJETAS
+========================================================= */
+
+.card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.07);
+
+    border: 1px solid #e2e8f0;
+}
+
+.section-title {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+}
+
+.section-number {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+    border-radius: 8px;
+
+    padding: 5px 10px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+.section-title h2 {
+    font-size: 26px;
+
+    color: #0f172a;
+
+    margin-bottom: 5px;
+}
+
+.section-title p {
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   5. VARIABLES / CONTROLES
+========================================================= */
+
+.controls-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.control {
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 14px;
+
+    padding: 18px;
+}
+
+.control label {
+    display: block;
+
+    font-weight: 700;
+
+    color: #334155;
+
+    margin-bottom: 10px;
+}
+
+.input-group {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.input-group input {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #0f172a;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.input-group span {
+    color: #64748b;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.control small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   6. BOTONES
+========================================================= */
+
+.buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.btn {
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 13px 22px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: #2563eb;
+
+    color: white;
+
+    box-shadow:
+        0 5px 15px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+
+    color: #334155;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e1;
+}
+
+.btn-danger {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+.btn-danger:hover {
+    background: #fecaca;
+}
+
+
+/* =========================================================
+   7. ÁREA DE SIMULACIÓN
+========================================================= */
+
+.simulation-area {
+    display: flex;
+
+    width: 100%;
+
+    min-height: 500px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #97afcf,
+            #367cd8 70%,
+            #e2e8f0
+        );
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid #bfdbfe;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   8. ESCALA DE ALTURA
+========================================================= */
+
+.height-scale {
+    width: 75px;
+
+    padding: 25px 8px 55px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border-right: 1px solid #bfdbfe;
+
+    color: #475569;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   9. ZONA DE CAÍDA
+========================================================= */
+
+.fall-zone {
+    position: relative;
+
+    flex: 1;
+
+    min-height: 500px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   10. OBJETO
+========================================================= */
+
+.objeto {
+    position: absolute;
+
+    left: 50%;
+
+    top: 20px;
+
+    transform: translateX(-50%);
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #60a5fa,
+            #2563eb 55%,
+            #1e3a8a
+        );
+
+    color: white;
+
+    font-size: 0;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.4);
+
+    z-index: 5;
+
+    transition:
+        top 0.05s linear;
+}
+
+
+/* Brillo del objeto */
+
+.objeto::before {
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    top: 9px;
+
+    left: 11px;
+}
+
+
+/* =========================================================
+   11. SUELO
+========================================================= */
+
+.suelo {
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 55px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #475569 0,
+            #475569 12px,
+            #64748b 12px,
+            #64748b 24px
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    border-top: 5px solid #334155;
+}
+
+
+/* =========================================================
+   12. ESTADO DE SIMULACIÓN
+========================================================= */
+
+.simulation-status {
+    margin-top: 15px;
+
+    padding: 13px 16px;
+
+    border-radius: 10px;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    color: #166534;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   13. DATOS EN TIEMPO REAL
+========================================================= */
+
+.data-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.data-box {
+    position: relative;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 145px;
+}
+
+.data-icon {
+    font-size: 23px;
+
+    margin-bottom: 8px;
+}
+
+.data-label {
+    color: #64748b;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.data-box strong {
+    color: #0f172a;
+
+    font-size: 29px;
+
+    line-height: 1.2;
+
+    margin-top: 4px;
+}
+
+.data-box > span:last-child {
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+
+/* Colores de las energías */
+
+.data-box.potential {
+    border-left: 5px solid #2563eb;
+}
+
+.data-box.kinetic {
+    border-left: 5px solid #16a34a;
+}
+
+.data-box.mechanical {
+    border-left: 5px solid #f97316;
+}
+
+
+/* =========================================================
+   14. INDICADOR DE CONSERVACIÓN
+========================================================= */
+
+.conservation {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 22px;
+
+    padding: 18px;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 14px;
+
+    color: #166534;
+}
+
+.conservation-icon {
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #22c55e;
+
+    color: white;
+
+    font-weight: 900;
+
+    font-size: 20px;
+}
+
+.conservation strong {
+    display: block;
+
+    font-size: 16px;
+}
+
+.conservation p {
+    font-size: 13px;
+
+    margin-top: 2px;
+
+    color: #15803d;
+}
+
+
+/* =========================================================
+   15. TABLA
+========================================================= */
+
+.table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e8f0;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 750px;
+}
+
+thead {
+    background: #0f172a;
+
+    color: white;
+}
+
+th {
+    padding: 15px 12px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+td {
+    padding: 13px 12px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    font-size: 14px;
+
+    color: #334155;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tbody tr:hover {
+    background: #eff6ff;
+}
+
+
+/* =========================================================
+   16. GRÁFICAS
+========================================================= */
+
+.chart-container {
+    position: relative;
+
+    width: 100%;
+
+    height: 420px;
+
+    padding: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+
+    height: 100% !important;
+}
+
+
+/* =========================================================
+   17. FÓRMULAS
+========================================================= */
+
+.formula-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.formula-box {
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 15px;
+
+    padding: 22px;
+}
+
+.formula-box h3 {
+    color: #334155;
+
+    margin-bottom: 12px;
+
+    font-size: 17px;
+}
+
+.formula {
+    background: #0f172a;
+
+    color: #bfdbfe;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    font-family: "Cambria Math", "Times New Roman", serif;
+}
+
+.formula-box p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   18. CONCLUSIÓN
+========================================================= */
+
+.conclusion {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #f8fafc
+        );
+
+    border: 1px solid #bfdbfe;
+
+    margin-bottom: 30px;
+}
+
+.conclusion-icon {
+    width: 50px;
+
+    height: 50px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #2563eb;
+
+    font-size: 24px;
+}
+
+.conclusion h2 {
+    color: #1e3a8a;
+
+    margin-bottom: 5px;
+}
+
+.conclusion p {
+    color: #475569;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   19. PIE DE PÁGINA
+========================================================= */
+
+footer {
+    text-align: center;
+
+    background: #0f172a;
+
+    color: #94a3b8;
+
+    padding: 30px 20px;
+
+    font-size: 13px;
+}
+
+footer p:first-child {
+    color: white;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   20. ANIMACIONES
+========================================================= */
+
+@keyframes objectPulse {
+
+    0% {
+        box-shadow:
+            0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    50% {
+        box-shadow:
+            0 12px 30px rgba(37, 99, 235, 0.6);
+    }
+
+    100% {
+        box-shadow:
+            0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+}
+
+.objeto {
+    animation: objectPulse 1.5s infinite;
+}
+
+
+/* =========================================================
+   21. RESPONSIVE - TABLETS
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .controls-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .data-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   22. RESPONSIVE - CELULARES
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .header {
+        padding: 40px 18px;
+    }
+
+    .header h1 {
+        font-size: 34px;
+    }
+
+    .header p {
+        font-size: 15px;
+    }
+
+    .container {
+        width: 94%;
+
+        margin-top: 25px;
+    }
+
+    .card {
+        padding: 20px;
+
+        border-radius: 16px;
+    }
+
+    .section-title h2 {
+        font-size: 22px;
+    }
+
+    .controls-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .simulation-area {
+        min-height: 430px;
+    }
+
+    .fall-zone {
+        min-height: 430px;
+    }
+
+    .height-scale {
+        width: 55px;
+
+        font-size: 10px;
+    }
+
+    .objeto {
+        width: 40px;
+
+        height: 40px;
+    }
+
+    .chart-container {
+        height: 330px;
+
+        padding: 8px;
+    }
+
+    .formula-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formula {
+        font-size: 17px;
+    }
+
+    .conclusion {
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================================
+   23. SELECCIÓN DE TEXTO
+========================================================= */
+
+::selection {
+    background: #2563eb;
+
+    color: white;
+}
